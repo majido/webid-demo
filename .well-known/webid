@@ -1,0 +1,5 @@
+{
+
+  idp_endpoint: "http://majido.github.com/webid-demo/idp_endpoint"
+
+}
