@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to my cool site</title>
+
+  </head>
+  <body>
+
+    <h1> Welcome to RP site</h1>
+    <p>logging in to IDP</p>
+    <tt>
+    navigator.id.get({
+      provider: "https://localhost:8000"
+    });
+    </tt>
+    <hr/>
+
+  </body>
+  <script>
+    function log(message) {
+        console.log(message);
+        document.body.append(message)
+    }
+
+    async function main() {
+      if (!navigator.id) {
+        log("navigator.id is not available.");
+        return;
+      }
+
+      try {
+        const token = await navigator.id.get({
+          provider: "https://localhost:8000/",
+          request: "", // Could include any OAuth request fields
+        });
+
+        log(`received token: ${token}`);
+      } catch (e) {
+        log(`rejected with ${e}`);
+      }
+    }
+
+    main();
+  </script>
+
+</html>

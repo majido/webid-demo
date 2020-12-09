@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SignIn to Demo IDP</title>
+
+</head>
+
+<body>
+    <h3>
+        Welcome to Demo IDP!
+    </h3>
+    <tt>Calling `navigator.id.provide("some_token");`</tt>
+    <hr/>
+</body>
+
+<script>
+    function log(message) {
+        console.log(message);
+        document.body.append(message)
+    }
+
+    if (!navigator.id) {
+        log("navigator.id is not available.");
+    } else {
+
+        navigator.id.provide("some_token").then(() => {
+            log("Successfully provided the token");
+        }, () => {
+            log("Failed to provide the token");
+        });
+    }
+</script>
+</html>
